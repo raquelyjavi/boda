@@ -1,18 +1,18 @@
 ---
 import Layout from "@/layouts/Layout.astro";
-import HeroKeyBackground from "@/assets/hero-key-background.webp";
+import BodaBackground from "@/assets/boda-background.webp";
 ---
 
 <Layout>
   <div id="logo-mask" class="fixed top-0 w-full h-screen">
     <section>
       <picture
-        id="hero-key"
+        id="boda"
         class="h-screen scale-125 block overflow-hidden fixed"
       >
         <img
-          id="hero-key-background"
-          src={HeroKeyBackground.src}
+          id="boda-background"
+          src={BodaBackground.src}
           class="w-full h-full object-cover"
         />
       </picture>
@@ -23,7 +23,7 @@ import HeroKeyBackground from "@/assets/hero-key-background.webp";
     class="fixed flex flex-col items-center justify-between h-screen px-20 py-16 w-full"
   >
     <header class="flex justify-between w-full"></header>
-    <footer id="hero-footer" class="absolute bottom-8 m-auto">
+    <footer id="boda-footer" class="absolute bottom-8 m-auto">
       <span
         class="absolute uppercase tracking-[6px] whitespace-nowrap text-center top-[49px] font-medium text-shadow-[0_0_2px_rgba(255,255,255,.5),0_0_8px_#000] left-1/2 -translate-x-1/2 text-lg"
       >
@@ -31,32 +31,61 @@ import HeroKeyBackground from "@/assets/hero-key-background.webp";
     </footer>
   </div>
 
-  <!-- <div
+  <div
     id="logo-text-1"
     class="fixed w-full flex flex-col items-center justify-center top-[50%] opacity-0 pointer-events-none"
   >
-    <p>¡Bienvenidos a nuestra boda!</p>
-    <p>Nos alegra que estés aquí.</p>
+    <p>Pos eso, que nos casamos</p>
+    <p>Imagen de los dos de pequeños</p>
   </div>
   <div
     id="logo-text-2"
     class="fixed w-full flex flex-col items-center justify-center top-[30%] opacity-0 pointer-events-none"
   >
-    <p>La celebración será inolvidable</p>
-    <p>Prepárate para un día especial.</p>
+    <p>¡Nos alegraría contar contigo en este día!</p>
+    <p>Pero se nos está complicando los preparativos...</p>
+    <p>Imagen graciosa de Raquel (durmiendo) y Javi (corrigiendo)</p>
   </div>
   <div
     id="logo-text-3"
     class="fixed w-full flex flex-col items-center justify-center top-[30%] opacity-0 pointer-events-none"
   >
-    <p>¡Gracias por acompañarnos!</p>
-  </div> -->
+    <p>¿Cómo será?</p>
+    <p>1 Boda - 3 Fiestas (Mejor que Pocholo)</p>
+  </div>
+   <div
+    id="logo-text-4"
+    class="fixed w-full flex flex-col items-center justify-center top-[30%] opacity-0 pointer-events-none"
+  >
+    <p>Fiesta 1: Ceremonia oficial</p>
+  </div>
+  <div
+    id="logo-text-5"
+    class="fixed w-full flex flex-col items-center justify-center top-[30%] opacity-0 pointer-events-none"
+  >
+    <p>Fiesta 2: Celebración en Vigo</p>
+  </div>
+
+    <div
+    id="logo-text-6"
+    class="fixed w-full flex flex-col items-center justify-center top-[30%] opacity-0 pointer-events-none"
+  >
+    <p>Fiesta 3: Celebración en Madrid</p>
+  </div>
+
+  <div
+    id="logo-text-7"
+    class="fixed w-full flex flex-col items-center justify-center top-[30%] opacity-0 pointer-events-none"
+  >
+    <p>Imagen </p>
+    <p>Más detalles próximamente</p>
+  </div>
 </Layout>
 
 <style>
   #logo-mask {
     background: white;
-    mask-image: url("/logo-stack.webp");
+    mask-image: url("/logo-stack.webp");;
     mask-position: 50% 25%;
     mask-repeat: no-repeat;
     mask-size: clamp(10000vh, 3500%, 0vh);
@@ -78,86 +107,96 @@ import HeroKeyBackground from "@/assets/hero-key-background.webp";
   const tl = gsap.timeline({
     ease: "power2.out",
     scrollTrigger: {
-      scrub: 1,
+      scrub: 3, // Aumentar este valor hace que la animación sea más suave al hacer scroll
+      start: "top top",
+      end: "+=3000", // Aumentar este valor para tener más espacio de scroll
+      pin: true, // Mantiene los elementos fijos mientras se hace scroll
     },
   });
 
-  tl.to("#hero-key", { duration: 1, scale: 1 })
-    .to("#hero-footer", { opacity: 0 }, "<")
+  tl.to("#boda", { duration: 3, scale: 1 })
+    .to("#boda-footer", { opacity: 0 }, "<")
     .to(
       "#logo-mask",
       {
         maskSize: "clamp(20vh, 25%, 30vh)",
+        duration: 4,
       },
       0.15,
     )
     .to(
-      "#hero-key",
+      "#boda",
       {
         opacity: 0,
-        duration: 0.2,
+        duration: 3,
       },
       0.4,
+    ).to(
+      "#logo-mask",
+      {
+        scale: 1.5,
+      },
+      0.15,
+    )
+    .to(
+      "#logo-text-1",
+      {
+        opacity: 1,
+        pointerEvents: "auto",
+        scale: 1,
+        duration: 4,
+        ease: "power2.out",
+      },
+      "+=1",
+    )
+    .to(
+      "#logo-text-1",
+      {
+        opacity: 0,
+        pointerEvents: "none",
+        scale: 0.5,
+        duration: 4,
+        ease: "power2.in",
+      },
+      "+=5",
+    )
+    .to(
+      "#logo-mask",
+      {
+        opacity: 0,
+        duration: 3,
+      },
+      "<",
+    )
+    .to("#logo-text-2", {
+      opacity: 1,
+      pointerEvents: "auto",
+      scale: 1,
+      duration: 4,
+      ease: "power2.out",
+    })
+    .to(
+      "#logo-text-2",
+      {
+        opacity: 0,
+        pointerEvents: "none",
+        scale: 0.5,
+        duration: 4,
+        ease: "power2.in",
+      },
+      "+=5",
+    )
+    .to("#logo-text-3", {
+      opacity: 1,
+      pointerEvents: "auto",
+      scale: 1,
+      duration: 4,
+      ease: "power2.out",
+    })
+    .fromTo(
+      "#logo-text-3",
+      { scale: 0.8 },
+      { scale: 1, duration: 4, ease: "power2.out" },
+      "<",
     );
-  // .to(
-  //   "#logo-text-1",
-  //   {
-  //     opacity: 1,
-  //     pointerEvents: "auto",
-  //     scale: 1,
-  //     duration: 2,
-  //     ease: "power2.out",
-  //   },
-  //   "+=0.1",
-  // )
-  // .to(
-  //   "#logo-text-1",
-  //   {
-  //     opacity: 0,
-  //     pointerEvents: "none",
-  //     scale: 0.5,
-  //     duration: 2,
-  //     ease: "power2.in",
-  //   },
-  //   "+=10",
-  // )
-  // .to(
-  //   "#logo-mask",
-  //   {
-  //     opacity: 0,
-  //     duration: 2,
-  //   },
-  //   "<",
-  // )
-  // .to("#logo-text-2", {
-  //   opacity: 1,
-  //   pointerEvents: "auto",
-  //   scale: 1,
-  //   duration: 2,
-  //   ease: "power2.out",
-  // })
-  // .to(
-  //   "#logo-text-2",
-  //   {
-  //     opacity: 0,
-  //     pointerEvents: "none",
-  //     scale: 0.5,
-  //     duration: 2,
-  //     ease: "power2.in",
-  //   },
-  //   "+=10",
-  // )
-  // .to("#logo-text-3", {
-  //   opacity: 1,
-  //   pointerEvents: "auto",
-  //   scale: 1,
-  //   duration: 2,
-  //   ease: "power2.out",
-  // })
-  // .fromTo(
-  //   "#logo-text-3",
-  //   { scale: 0.8 },
-  //   { scale: 1, duration: 2, ease: "power2.out" },
-  //   "<",
-  // );
 </script>

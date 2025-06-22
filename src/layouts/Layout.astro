@@ -22,8 +22,8 @@ import KeepScrolling from "@/assets/keep-scrolling.svg";
   @import "tailwindcss";
 
   @theme {
-    --font-sans: "GTA", system-ui, sans-serif;
-    --font-narrow: "GTANarrow", system-ui, sans-serif;
+    --font-sans: system-ui, sans-serif;
+    --font-narrow: system-ui, sans-serif;
 
     --animate-bounce-pulse: bounce-pulse 2s ease-in-out infinite;
   }
@@ -50,42 +50,34 @@ import KeepScrolling from "@/assets/keep-scrolling.svg";
 
   html,
   body {
-    background: #2b7a78;
-    height: 300vh;
+    background: #264653;
+    height: 1000vh; /* Aumentado de 300vh a 500vh */
     overflow-x: hidden;
     overscroll-behavior: none;
-    color: white;
+    color: #FFFAF6;
     margin: 0;
     width: 100%;
   }
 
   @font-face {
-    font-family: GTA;
-    src: url("/fonts/gta-regular.woff") format("woff");
     font-weight: normal;
     font-style: normal;
     font-display: swap;
   }
 
   @font-face {
-    font-family: GTA;
-    src: url("/fonts/gta-bold.woff") format("woff");
     font-weight: bold;
     font-style: normal;
     font-display: swap;
   }
 
   @font-face {
-    font-family: GTA;
-    src: url("/fonts/gta-semibold.woff") format("woff");
     font-weight: 600;
     font-style: normal;
     font-display: swap;
   }
 
   @font-face {
-    font-family: GTANarrow;
-    src: url("/fonts/gta-narrow.woff") format("woff");
     font-weight: normal;
     font-style: normal;
     font-display: swap;
