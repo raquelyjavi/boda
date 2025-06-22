@@ -9,5 +9,5 @@ export default defineConfig({
     plugins: [tailwindcss()]
   },
   site: 'https://raquelyjavi.github.io',
-  // base: 'boda',
+  base: 'boda',
 });
